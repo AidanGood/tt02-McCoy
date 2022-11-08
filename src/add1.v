@@ -6,9 +6,9 @@
 
 module add1(
     input [7:0] in,
-    output reg [7:0] out);
+    output [7:0] out);
     
-    always @(*) begin
-        out = in + 1;
-    end
+    
+    assign out = in + 1;
+    
 endmodule
