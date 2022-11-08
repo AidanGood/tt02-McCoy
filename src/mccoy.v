@@ -11,8 +11,8 @@ module aidan_McCoy(
     output reg [7:0] io_out);
 
     // map i/o to proper labels
-    wire clk = io_in[0];
-    wire reset = io_in[1];
+    wire clk = io_in[7];
+    wire reset = io_in[6];
     wire [5:0] instr = io_in[5:0];
     // opcode instr[2:0]
     // reg or imm instr[5:3]
@@ -49,7 +49,7 @@ module aidan_McCoy(
     
     add1 adder( .in(pc), .out(pc1));
     
-    branch branchBlock( .x8(x8), .bez(bez), .ja(ja), .pcSel(pcSel));
+    branch branchBlock( .x8(x8), .bez(bez), .ja(ja), .reset(reset), .pcSel(pcSel));
     
     /* ALU blocks */
     

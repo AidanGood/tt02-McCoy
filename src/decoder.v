@@ -86,6 +86,15 @@ module decoder(
                 writex8 = 0;
                 x8Sel = 0;
             end
+            default: begin
+                bez = 0;
+                ja = 0;
+                op1 = 0;
+                op2 = 0;
+                writeReg = 0;
+                writex8 = 0;
+                x8Sel = 0;
+            end
         endcase
     end
 endmodule

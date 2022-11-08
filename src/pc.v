@@ -10,7 +10,7 @@ module pc(
     input reset,
     output reg [7:0] PC);
     
-    always @(negedge clk or posedge reset) begin
+    always @(negedge clk) begin
         if (reset) 
             PC <= 8'd0;
         else
