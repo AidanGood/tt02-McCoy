@@ -6,14 +6,14 @@
 
 `default_nettype none
 
-module McCoy(
+module aidan_McCoy(
     input [7:0] io_in,
-    output [7:0] io_out);
+    output reg [7:0] io_out);
 
     // map i/o to proper labels
     wire clk = io_in[0];
     wire reset = io_in[1];
-    wire [5:0] instr = io_in[7:2];
+    wire [5:0] instr = io_in[5:0];
     // opcode instr[2:0]
     // reg or imm instr[5:3]
     
@@ -67,6 +67,14 @@ module McCoy(
     x8 x8Block( .writex8(writex8), .newx8(newx8), .x8(x8));
     
     mux3 x8Mux( .in0(regOut), .in1({5'd0, instr[5:3]}), .in2(aluOut), .sel(x8Sel), .out(newx8));
+    
+    always @(posedge clk) begin
+        io_out <= pc;
+    end
+    
+    always @(negedge clk) begin
+        io_out <= x8;
+    end
     
 endmodule
     
