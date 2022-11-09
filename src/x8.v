@@ -5,9 +5,9 @@
 */
 
 module x8(
-    input [7:0] newx8,
+    input [5:0] newx8,
     input writex8,
-    output reg [7:0] x8);
+    output reg [5:0] x8);
     
     always @(*) begin
         if (writex8) begin

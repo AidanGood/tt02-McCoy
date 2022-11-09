@@ -27,16 +27,16 @@ module aidan_McCoy(
     wire [1:0] x8Sel;
     
     // Other wires
-    wire [7:0] pc;
-    wire [7:0] pc1;
-    wire [7:0] nextPC;
+    wire [5:0] pc;
+    wire [5:0] pc1;
+    wire [5:0] nextPC;
     wire pcSel;
-    wire [7:0] aluOut;
-    wire [7:0] x8;
-    wire [7:0] newx8;
-    wire [7:0] op1;
-    wire [7:0] op2;
-    wire [7:0] regOut;
+    wire [5:0] aluOut;
+    wire [5:0] x8;
+    wire [5:0] newx8;
+    wire [5:0] op1;
+    wire [5:0] op2;
+    wire [5:0] regOut;
 
     decoder decoderBlock( .opcode(instr[2:0]), .bez(bez), .ja(ja), .op1(op1Sel), .op2(op2Sel),
                             .writeReg(writeReg), .writex8(writex8), .x8Sel(x8Sel));
@@ -53,9 +53,9 @@ module aidan_McCoy(
     
     /* ALU blocks */
     
-    mux2 op1Mux( .in0({5'd0, instr[5:3]}), .in1(x8), .sel(op1Sel), .out(op1));
+    mux2 op1Mux( .in0({3'd0, instr[5:3]}), .in1(x8), .sel(op1Sel), .out(op1));
     
-    mux3 op2Mux( .in0(regOut), .in1(pc), .in2(8'hff), .sel(op2Sel), .out(op2));
+    mux3 op2Mux( .in0(regOut), .in1(pc), .in2(6'hff), .sel(op2Sel), .out(op2));
     
     alu aluBlock( .op1(op1), .op2(op2), .aluOut(aluOut));
     
@@ -66,14 +66,14 @@ module aidan_McCoy(
                         
     x8 x8Block( .writex8(writex8), .newx8(newx8), .x8(x8));
     
-    mux3 x8Mux( .in0(regOut), .in1({5'd0, instr[5:3]}), .in2(aluOut), .sel(x8Sel), .out(newx8));
+    mux3 x8Mux( .in0(regOut), .in1({3'd0, instr[5:3]}), .in2(aluOut), .sel(x8Sel), .out(newx8));
     
     always @(posedge clk) begin
-        io_out <= pc;
+        io_out <= {2'b00, pc};
     end
     
     always @(negedge clk) begin
-        io_out <= x8;
+        io_out <= {2'b00, x8};
     end
     
 endmodule

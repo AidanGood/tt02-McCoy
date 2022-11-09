@@ -5,14 +5,14 @@
 */
 
 module alu(
-	input [7:0] op1,
-	input [7:0] op2,
-	output reg [7:0] aluOut);
+	input [5:0] op1,
+	input [5:0] op2,
+	output [5:0] aluOut);
 
 	
-	always @(*) begin
-		aluOut = op1 + op2;
-	end
+	
+	assign aluOut = op1 + op2;
+	
 	
 endmodule
 

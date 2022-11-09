@@ -5,7 +5,7 @@
 */
 
 module branch(
-    input [7:0] x8,
+    input [5:0] x8,
     input bez,
     input ja,
     input reset,

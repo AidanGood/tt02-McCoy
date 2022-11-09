@@ -5,14 +5,14 @@
 */
 
 module pc(
-    input [7:0] nextPC,
+    input [5:0] nextPC,
     input clk,
     input reset,
-    output reg [7:0] PC);
+    output reg [5:0] PC);
     
     always @(negedge clk) begin
         if (reset) 
-            PC <= 8'd0;
+            PC <= 6'd0;
         else
             PC <= nextPC;
     end
