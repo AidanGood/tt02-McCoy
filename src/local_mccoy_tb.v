@@ -21,29 +21,34 @@ module tb(
     
     aidan_McCoy McCoy( .io_in(inputs), .io_out (outputs));
     
-    
-    // this part dumps the trace to a vcd file that can be viewed with GTKWave
+    always #1 clk = ~clk;
+
+    // Test program covering all instructions
     initial begin
         $dumpfile ("tb.vcd");
         $dumpvars (0, tb);
         #1
         reset = 1;
-        clk = 1;
-        #1
-        clk = 0;
-        #1
-        clk = 1;
+        #2
         reset = 0;
-        #1
-        instr = 6'b011001;
-        clk = 0;
-        #1
-        clk = 1;
-        #1
-        clk = 0;
-        #1
-        clk = 1;
-        #1
+        instr = 6'b011001; // 3 li
+        #2
+        instr = 6'b010110; // x2 sr 
+        #2
+        instr = 6'b100001; // 4 li
+        #2
+        instr = 6'b010100; // x2 lr
+        #2
+        instr = 6'b000100; // x0 lr
+        #2
+        instr = 6'b010011; // x2 add
+        #2 
+        instr = 6'b000011; // x0 add
+        #2
+        instr = 6'b000001; // 0 li
+        #2
+        instr = 6'b011000; // 3 bez
+        #2
         $finish;
     end
 

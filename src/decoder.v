@@ -54,7 +54,7 @@ module decoder(
                 op2 = 0;
                 writeReg = 0;
                 writex8 = 1;
-                x8Sel = 1;
+                x8Sel = 0;
             end
             // lr (load register)
             3'b100: begin

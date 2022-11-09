@@ -15,7 +15,7 @@ module branch(
         if (reset) pcSel = 1;
         else if (ja == 1) pcSel = 0;
         else if (bez == 1) begin
-            pcSel = (x8 == 8'd0) ? 1 : 0;
+            pcSel = (x8 == 8'd0) ? 0 : 1;
         end
         else pcSel = 1;
     end

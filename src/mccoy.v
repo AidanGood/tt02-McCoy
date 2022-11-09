@@ -55,7 +55,7 @@ module aidan_McCoy(
     
     mux2 op1Mux( .in0({3'd0, instr[5:3]}), .in1(x8), .sel(op1Sel), .out(op1));
     
-    mux3 op2Mux( .in0(regOut), .in1(pc), .in2(6'hff), .sel(op2Sel), .out(op2));
+    mux3 op2Mux( .in0(regOut), .in1(pc), .in2(6'b11111), .sel(op2Sel), .out(op2));
     
     alu aluBlock( .op1(op1), .op2(op2), .aluOut(aluOut));
     
