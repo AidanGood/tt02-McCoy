@@ -2,12 +2,12 @@
 
 # The McCoy 6-bit Custom Microprocessor 
 
-With design inspirations from the RISC ISA architecture and [Zennia](https://github.com/cpldcpu/tinytapeout_mcpu5) microprocessor.
+With design inspirations from the RISC-V ISA and [Zinnia](https://github.com/cpldcpu/tinytapeout_mcpu5) microprocessor.
 
 
 ## Overview of Architecture
 
-A RISC 6-bit CPU based on the Harvard Architecture. 7 instructions, 9 registers. Register x0 is always 0, registers x1 through x7 are general purpose, and register x8 is a special function register and output. 
+A RISC 6-bit CPU based on the Harvard Architecture. 7 instructions, 9 registers. Register x0 is always 0, registers x1 through x7 are general purpose, and register x8 is a special function register and output. All instructions have fixed length opcodes. No overflow 
 
 The 8 input bits:
  - The clock signal

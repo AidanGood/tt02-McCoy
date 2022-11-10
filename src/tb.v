@@ -21,7 +21,7 @@ module tb (
     end
 
 
-    wire [7:0] inputs = {clk, reset, instr};
+    wire [7:0] inputs = {instr, reset, clk};
     wire [7:0] outputs;
     assign data_out = outputs;
     

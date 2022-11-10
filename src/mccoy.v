@@ -11,15 +11,16 @@ module aidan_McCoy(
     output reg [7:0] io_out);
 
     // map i/o to proper labels
-    wire clk = io_in[7];
-    wire reset = io_in[6];
-    wire [5:0] instr = io_in[5:0];
+    wire clk = io_in[0];
+    wire reset = io_in[1];
+    wire [5:0] instr = io_in[7:2];
     // opcode instr[2:0]
     // reg or imm instr[5:3]
     
     // decode signals
     wire bez;
     wire ja;
+    wire aluFun;
     wire op1Sel;
     wire [1:0] op2Sel;
     wire writeReg;
@@ -37,9 +38,14 @@ module aidan_McCoy(
     wire [5:0] op1;
     wire [5:0] op2;
     wire [5:0] regOut;
+    wire [5:0] imm;
 
-    decoder decoderBlock( .opcode(instr[2:0]), .bez(bez), .ja(ja), .op1(op1Sel), .op2(op2Sel),
+    /* Misc. blocks */ 
+    
+    decoder decoderBlock( .opcode(instr[2:0]), .bez(bez), .ja(ja), .aluFun(aluFun), .op1(op1Sel), .op2(op2Sel),
                             .writeReg(writeReg), .writex8(writex8), .x8Sel(x8Sel));
+                            
+    iSign signBlock( .imm(instr[5:3]), .out(imm));
     
     /* PC related blocks */
     
@@ -53,27 +59,27 @@ module aidan_McCoy(
     
     /* ALU blocks */
     
-    mux2 op1Mux( .in0({3'd0, instr[5:3]}), .in1(x8), .sel(op1Sel), .out(op1));
+    mux2 op1Mux( .in0(regOut), .in1(x8), .sel(op1Sel), .out(op1));
     
     mux3 op2Mux( .in0(regOut), .in1(pc), .in2(6'b11111), .sel(op2Sel), .out(op2));
     
-    alu aluBlock( .op1(op1), .op2(op2), .aluOut(aluOut));
+    alu aluBlock( .op1(op1), .op2(op2), .aluFun(aluFun), .aluOut(aluOut));
     
     /* x8 and other register blocks */
     
     register regBlock( .clk(clk), .reset(reset), .regAddr(instr[5:3]), .x8(x8), .writeReg(writeReg),
                         .out(regOut));
                         
-    x8 x8Block( .writex8(writex8), .newx8(newx8), .x8(x8));
+    x8 x8Block( .clk(clk), .writex8(writex8), .newx8(newx8), .x8(x8));
     
-    mux3 x8Mux( .in0(regOut), .in1({3'd0, instr[5:3]}), .in2(aluOut), .sel(x8Sel), .out(newx8));
+    mux3 x8Mux( .in0(regOut), .in1(imm), .in2(aluOut), .sel(x8Sel), .out(newx8));
     
     always @(posedge clk) begin
         io_out <= {2'b00, pc};
     end
     
     always @(negedge clk) begin
-        io_out <= {2'b00, x8};
+        io_out <= x8[5] ? {2'b11, x8} : {2'd0, x8};
     end
     
 endmodule

@@ -8,6 +8,7 @@ module decoder(
 	input [2:0] opcode,
 	output reg bez,
 	output reg ja,
+	output reg aluFun,
 	output reg op1,
 	output reg [1:0] op2,
 	output reg writeReg,
@@ -16,19 +17,8 @@ module decoder(
 
 	always @(*) begin
 		case(opcode)
-            // bez (branch equal zero)
-            3'b000: begin
-                bez = 1;
-                ja = 0;
-                op1 = 0;
-                op2 = 1;
-                aluFun = 0;
-                writeReg = 0;
-                writex8 = 0;
-                x8Sel = 0;
-            end
             // li (load immediate)
-            3'b001: begin
+            3'b000: begin
                 bez = 0;
                 ja = 0;
                 op1 = 0;
@@ -39,10 +29,21 @@ module decoder(
                 x8Sel = 1;
             end
             // ja (jump unconditional)
-            3'b010: begin
+            3'b001: begin
                 bez = 0;
                 ja = 1;
                 op1 = 1;
+                op2 = 1;
+                aluFun = 0;
+                writeReg = 0;
+                writex8 = 0;
+                x8Sel = 0;
+            end
+            // bez (branch equal zero)
+            3'b010: begin
+                bez = 1;
+                ja = 0;
+                op1 = 0;
                 op2 = 1;
                 aluFun = 0;
                 writeReg = 0;
@@ -53,12 +54,12 @@ module decoder(
             3'b011: begin
                 bez = 0;
                 ja = 0;
-                op1 = 0;
+                op1 = 1;
                 op2 = 0;
                 aluFun = 0;
                 writeReg = 0;
                 writex8 = 1;
-                x8Sel = 0;
+                x8Sel = 2;
             end
             // lr (load register)
             3'b100: begin
