@@ -23,7 +23,7 @@ module tb(
     
     always #1 clk = ~clk;
 
-    // Test program covering all instructions
+    // Test program covering instructions
     initial begin
         $dumpfile ("tb.vcd");
         $dumpvars (0, tb);
@@ -35,7 +35,7 @@ module tb(
         #2
         instr = 6'b010110; // x2 sr 
         #2
-        instr = 6'b100001; // 4 li
+        instr = 6'b100001; // -1 li
         #2
         instr = 6'b010100; // x2 lr
         #2
@@ -48,6 +48,8 @@ module tb(
         instr = 6'b000001; // 0 li
         #2
         instr = 6'b011000; // 3 bez
+        #2
+        instr = 6'b011010; // ja
         #2
         $finish;
     end
