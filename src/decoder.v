@@ -10,7 +10,7 @@ module decoder(
 	output reg ja,
 	output reg aluFun,
 	output reg op1,
-	output reg [1:0] op2,
+	output reg op2,
 	output reg writeReg,
 	output reg writex8,
 	output reg [1:0] x8Sel);

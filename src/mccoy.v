@@ -22,7 +22,7 @@ module aidan_McCoy(
     wire ja;
     wire aluFun;
     wire op1Sel;
-    wire [1:0] op2Sel;
+    wire op2Sel;
     wire writeReg;
     wire writex8;
     wire [1:0] x8Sel;
@@ -61,7 +61,7 @@ module aidan_McCoy(
     
     mux2 op1Mux( .in0(regOut), .in1(x8), .sel(op1Sel), .out(op1));
     
-    mux3 op2Mux( .in0(regOut), .in1(pc), .in2(6'b11111), .sel(op2Sel), .out(op2));
+    mux2 op2Mux( .in0(regOut), .in1(pc), .sel(op2Sel), .out(op2));
     
     alu aluBlock( .op1(op1), .op2(op2), .aluFun(aluFun), .aluOut(aluOut));
     

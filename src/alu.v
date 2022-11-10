@@ -12,14 +12,14 @@ module alu(
 
 	
 	
-	//always @(*) begin
-	//    case (aluFun)
-	//        1'b0: aluOut = op1 + op2;
-	//        1'b1: aluOut = op1 ^ op2;
-	//    endcase
-    //end
+	always @(*) begin
+	    case (aluFun)
+	        1'b0: aluOut = op1 + op2;
+	        1'b1: aluOut = ~op1;
+	    endcase
+    end
     
-    assign aluOut = op1 + op2;
+    //assign aluOut = op1 + op2;
 	
 	
 endmodule
