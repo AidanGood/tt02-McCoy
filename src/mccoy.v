@@ -8,7 +8,7 @@
 
 module aidan_McCoy(
     input [7:0] io_in,
-    output reg [7:0] io_out);
+    output [7:0] io_out);
 
     // map i/o to proper labels
     wire clk = io_in[0];
@@ -74,13 +74,16 @@ module aidan_McCoy(
     
     mux3 x8Mux( .in0(regOut), .in1(imm), .in2(aluOut), .sel(x8Sel), .out(newx8));
     
-    always @(posedge clk) begin
-        io_out <= {2'b00, pc};
-    end
     
-    always @(negedge clk) begin
-        io_out <= {2'b00, x8};
-    end
+    assign io_out = clk ? {2'b00, pc} : {2'b00, x8};
+    
+    //always @(posedge clk) begin
+    //    io_out <= {2'b00, pc};
+    //end
+    
+    //always @(negedge clk) begin
+    //    io_out <= {2'b00, x8};
+    //end
     
 endmodule
     

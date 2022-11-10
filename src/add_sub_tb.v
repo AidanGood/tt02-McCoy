@@ -44,13 +44,13 @@ module tb(
         #2
         instr = 6'b010011; // x2 add
         #1
-        $display("Expected value: 2 + 3 = 5. Output: %d", outputs); 
+        $display("Expected value: 2 + 3 = 5. Output: %d", outputs[5:0]); 
         #1 
         instr = 6'b010000; // 2 li
         #2
         instr = 6'b011011; // x3 add
         #2
-        $display("Expected value: 2 + -4 = -2. Output: %d", $signed(outputs)); 
+        $display("Expected value: 2 + -4 = -2. Output: %d", $signed(outputs[5:0])); 
 
         $finish;
     end
