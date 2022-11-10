@@ -76,14 +76,7 @@ module aidan_McCoy(
     
     
     assign io_out = clk ? {2'b00, pc} : {2'b00, x8};
-    
-    //always @(posedge clk) begin
-    //    io_out <= {2'b00, pc};
-    //end
-    
-    //always @(negedge clk) begin
-    //    io_out <= {2'b00, x8};
-    //end
+
     
 endmodule
     

@@ -32,6 +32,7 @@ module tb(
         reset = 1;
         #2
         reset = 0;
+        $display("Begin testing addition with out not. 2 + 3 and 2 + -4");
         instr = 6'b011000; // 3 li
         #2
         instr = 6'b010110; // x2 sr 
@@ -51,7 +52,38 @@ module tb(
         instr = 6'b011011; // x3 add
         #2
         $display("Expected value: 2 + -4 = -2. Output: %d", $signed(outputs[5:0])); 
-
+        $display("Begin testing addition with not. 3 - 12");
+        #2
+        instr = 6'b011000; // 3 li
+        #2
+        instr = 6'b001110; // x1 sr
+        #2
+        instr = 6'b001011; // x1 add
+        #2
+        $display("Expected value: 3 + 3 = 6. Output: %d", $signed(outputs[5:0])); 
+        instr = 6'b001011; // x1 add
+        #2
+        $display("Expected value: 3 + 6 = 9. Output: %d", $signed(outputs[5:0])); 
+        instr = 6'b001011; // x1 add
+        #2
+        $display("Expected value: 3 + 9 = 12. Output: %d", $signed(outputs[5:0])); 
+        instr = 6'b001101; // not
+        #2
+        $display("Expected value: !12 = -13. Output: %d", $signed(outputs[5:0])); 
+        instr = 6'b001110; // x1 sr
+        #2
+        instr = 6'b001000; // 1 li
+        #2
+        instr = 6'b001011; // x1 add
+        #2
+        $display("Expected value: 1 + -13 = -12. Output: %d", $signed(outputs[5:0])); 
+        instr = 6'b001110; // x1 sr
+        #2
+        instr = 6'b011000; // 3 li
+        #2
+        instr = 6'b001011; // x1 add
+        #2
+        $display("Expected value: 3 + -12 = -9. Output: %d", $signed(outputs[5:0])); 
         $finish;
     end
 
