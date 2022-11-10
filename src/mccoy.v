@@ -79,7 +79,7 @@ module aidan_McCoy(
     end
     
     always @(negedge clk) begin
-        io_out <= x8[5] ? {2'b11, x8} : {2'd0, x8};
+        io_out <= {2'b00, x8};
     end
     
 endmodule
