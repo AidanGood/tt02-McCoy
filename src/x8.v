@@ -12,8 +12,8 @@ module x8(
     
     always @(negedge clk) begin
         if (writex8) begin
-            x8 = newx8;
+            x8 <= newx8;
         end
-        else x8 = x8;
+        else x8 <= x8;
     end
 endmodule 
