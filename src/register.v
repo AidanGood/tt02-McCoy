@@ -13,7 +13,7 @@ module register(
     output reg [5:0] out);
 
     // 8 registers 8 bits each
-    reg [5:0] registers [6:0];
+    reg [5:0] registers [7:0];
     //reg [7:0] tempWrite;
 
 
