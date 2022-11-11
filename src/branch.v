@@ -1,7 +1,7 @@
 /*
 * Aidan Good
 * branch.v
-* Logic for if the next PC is +1 or from alu
+* Logic for if the next PC is PC + 1 or PC + alu output
 */
 
 module branch(
@@ -13,8 +13,8 @@ module branch(
     
     always @(*) begin
         if (reset) pcSel = 1;
-        else if (ja == 1) pcSel = 0;
-        else if (bez == 1) begin
+        else if (ja) pcSel = 0;
+        else if (bez) begin
             pcSel = (x8 == 8'd0) ? 0 : 1;
         end
         else pcSel = 1;
