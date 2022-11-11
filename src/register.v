@@ -12,25 +12,26 @@ module register(
     input writeReg,
     output reg [5:0] out);
 
-    // 8 registers 8 bits each
+    // 8 registers 6 bits each
     reg [5:0] registers [7:0];
-    //reg [7:0] tempWrite;
+
 
 
     // At clk edge if write enabled, write what's in x8 to requested register. keep x0 = 0	
     always @(negedge clk) begin
-	if (writeReg) begin
-	    if (regAddr != 3'd0) 
-		registers[regAddr] <= x8;
-	    else
-		registers[0] <= 6'b0;
-	end
-	registers[0] <= 6'b0;
+	    if (writeReg) begin
+	        if (regAddr != 3'd0) 
+		        registers[regAddr] <= x8;
+	        else
+		        registers[0] <= 6'b0;
+	    end
+	    registers[0] <= 6'b0;
     end
 
     // Output requested reg always
     always @(*) begin
-	out = registers[regAddr];
+	    out = registers[regAddr];
     end
+    
 endmodule
 
