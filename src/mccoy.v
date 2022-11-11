@@ -20,7 +20,7 @@ module aidan_McCoy(
     // decode signals
     wire bez;
     wire ja;
-    wire aluFun;
+    //wire aluFun;
     wire op1Sel;
     wire op2Sel;
     wire writeReg;
@@ -39,10 +39,11 @@ module aidan_McCoy(
     wire [5:0] op2;
     wire [5:0] regOut;
     wire [5:0] imm;
+    wire [5:0] notx8;
 
     /* Misc. blocks */ 
     
-    decoder decoderBlock( .opcode(instr[2:0]), .bez(bez), .ja(ja), .aluFun(aluFun), .op1(op1Sel), .op2(op2Sel),
+    decoder decoderBlock( .opcode(instr[2:0]), .bez(bez), .ja(ja), /*.aluFun(aluFun),*/ .op1(op1Sel), .op2(op2Sel),
                             .writeReg(writeReg), .writex8(writex8), .x8Sel(x8Sel));
                             
     iSign signBlock( .imm(instr[5:3]), .out(imm));
@@ -63,7 +64,7 @@ module aidan_McCoy(
     
     mux2 op2Mux( .in0(regOut), .in1(pc), .sel(op2Sel), .out(op2));
     
-    alu aluBlock( .op1(op1), .op2(op2), .aluFun(aluFun), .aluOut(aluOut));
+    alu aluBlock( .op1(op1), .op2(op2), /*.aluFun(aluFun),*/ .aluOut(aluOut));
     
     /* x8 and other register blocks */
     
@@ -72,7 +73,9 @@ module aidan_McCoy(
                         
     x8 x8Block( .clk(clk), .writex8(writex8), .newx8(newx8), .x8(x8));
     
-    mux3 x8Mux( .in0(regOut), .in1(imm), .in2(aluOut), .sel(x8Sel), .out(newx8));
+    notx8 nx8( .x8(x8), .out(notx8));
+    
+    mux4 x8Mux( .in0(regOut), .in1(imm), .in2(aluOut), .in3(notx8), .sel(x8Sel), .out(newx8));
     
     
     assign io_out = clk ? {2'b00, pc} : {2'b00, x8};

@@ -1,13 +1,14 @@
 /*
 * Aidan Good
-* mux3.v
-* impliment a 3-input mux switch
+* mux4.v
+* impliment a 4-input mux switch
 */
 
-module mux3(
+module mux4(
     input [5:0] in0,
     input [5:0] in1,
     input [5:0] in2,
+    input [5:0] in3,
     input [1:0] sel,
     output reg [5:0] out);
 
@@ -16,8 +17,7 @@ module mux3(
             2'b00: out = in0;
             2'b01: out = in1;
             2'b10: out = in2;
-            2'b11: out = in2;
+            2'b11: out = in3;
         endcase
     end
 endmodule
-
