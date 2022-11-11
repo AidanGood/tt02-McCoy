@@ -8,7 +8,6 @@ module decoder(
 	input [2:0] opcode,
 	output reg bez,
 	output reg ja,
-	//output reg aluFun,
 	output reg op1,
 	output reg op2,
 	output reg writeReg,
@@ -23,7 +22,6 @@ module decoder(
                 ja = 0;
                 op1 = 0;
                 op2 = 0;
-                //aluFun = 0;
                 writeReg = 0;
                 writex8 = 1;
                 x8Sel = 1;
@@ -34,7 +32,6 @@ module decoder(
                 ja = 1;
                 op1 = 1;
                 op2 = 1;
-               // aluFun = 0;
                 writeReg = 0;
                 writex8 = 0;
                 x8Sel = 0;
@@ -45,7 +42,6 @@ module decoder(
                 ja = 0;
                 op1 = 0;
                 op2 = 1;
-                //aluFun = 0;
                 writeReg = 0;
                 writex8 = 0;
                 x8Sel = 0;
@@ -56,7 +52,6 @@ module decoder(
                 ja = 0;
                 op1 = 1;
                 op2 = 0;
-                //aluFun = 0;
                 writeReg = 0;
                 writex8 = 1;
                 x8Sel = 2;
@@ -78,7 +73,6 @@ module decoder(
                 ja = 0;
                 op1 = 1;
                 op2 = 0;
-                //aluFun = 0;
                 writeReg = 0;
                 writex8 = 1;
                 x8Sel = 3;
@@ -89,7 +83,6 @@ module decoder(
                 ja = 0;
                 op1 = 0;
                 op2 = 0;
-                //aluFun = 0;
                 writeReg = 1;
                 writex8 = 0;
                 x8Sel = 0;
@@ -99,7 +92,6 @@ module decoder(
                 ja = 0;
                 op1 = 0;
                 op2 = 0;
-                //aluFun = 0;
                 writeReg = 0;
                 writex8 = 0;
                 x8Sel = 0;

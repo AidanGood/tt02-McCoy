@@ -16,4 +16,5 @@ module x8(
         end
         else x8 <= x8;
     end
+    
 endmodule 

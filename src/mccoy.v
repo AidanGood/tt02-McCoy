@@ -1,6 +1,6 @@
 /*
 * Aidan Good
-* mcCoy.v
+* mccoy.v
 * top level module for the McCoy microprocessor
 */
 

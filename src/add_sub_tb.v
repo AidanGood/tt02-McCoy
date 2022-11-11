@@ -5,13 +5,11 @@
 This is the addition/subtraction testbench. It tests the following aspects of the processor:
  - add, li, sr, not instructions
  - signed numbers 
+ - not x8
 */
 
-module tb(
-    // testbench is controlled by test.py
-    );
+module add_sub_tb();
 
-    
     reg clk = 0;
     reg reset = 0;
     reg [5:0] instr = 6'd0;
@@ -19,15 +17,14 @@ module tb(
     wire [7:0] inputs = {instr, reset, clk};
     wire [7:0] outputs;
     
-    
     aidan_McCoy McCoy( .io_in(inputs), .io_out (outputs));
     
     always #1 clk = ~clk;
 
-    // Test program covering instructions
+    // Test program
     initial begin
         $dumpfile ("tb.vcd");
-        $dumpvars (0, tb);
+        $dumpvars (0, add_sub_tb);
         #1
         reset = 1;
         #2

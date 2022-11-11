@@ -1,7 +1,7 @@
 /*
 * Aidan Good
 * mux2.v
-* impliment a 2-input mux switch
+* impliment a 2-input mux
 */
 
 module mux2(
@@ -16,4 +16,5 @@ module mux2(
             1'b1: out = in1;
         endcase
     end
+    
 endmodule

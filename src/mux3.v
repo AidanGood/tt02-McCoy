@@ -1,7 +1,7 @@
 /*
 * Aidan Good
 * mux3.v
-* impliment a 3-input mux switch
+* impliment a 3-input mux
 */
 
 module mux3(
@@ -19,5 +19,6 @@ module mux3(
             2'b11: out = in2;
         endcase
     end
+    
 endmodule
 

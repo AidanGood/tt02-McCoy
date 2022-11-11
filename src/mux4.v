@@ -1,7 +1,7 @@
 /*
 * Aidan Good
 * mux4.v
-* impliment a 4-input mux switch
+* impliment a 4-input mux 
 */
 
 module mux4(
@@ -20,4 +20,5 @@ module mux4(
             2'b11: out = in3;
         endcase
     end
+    
 endmodule

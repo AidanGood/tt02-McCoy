@@ -15,8 +15,6 @@ module register(
     // 8 registers 6 bits each
     reg [5:0] registers [7:0];
 
-
-
     // At clk edge if write enabled, write what's in x8 to requested register. keep x0 = 0	
     always @(negedge clk) begin
 	    if (writeReg) begin

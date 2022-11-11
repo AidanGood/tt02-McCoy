@@ -1,7 +1,7 @@
 /*
 * Aidan Good
-* iSign.v
-* This module is for not(x8).
+* notx8.v
+* This module is for not(x8) instruction.
 */
 
 
