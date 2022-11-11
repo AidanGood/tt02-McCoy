@@ -9,19 +9,10 @@ module alu(
 	input [5:0] op2,
 	input aluFun,
 	output [5:0] aluOut);
-
-	
-	
-	//always @(*) begin
-	//   case (aluFun)
-	//        1'b0: aluOut = op1 + op2;
-	//       1'b1: aluOut = ~op1;
-	//    endcase
-    //end
     
-    //assign aluOut = op1 + op2;
+    assign aluOut = op1 + op2;
 	
-	assign aluOut = (aluFun) ? ~op1 : (op1 + op2);
+	//assign aluOut = (aluFun) ? ~op1 : (op1 + op2);
 	
 endmodule
 
