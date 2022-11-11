@@ -18,7 +18,7 @@ module decoder(
 	always @(*) begin
 		case(opcode)
             // li (load immediate)
-            3'b000: begin
+            3'b001: begin
                 bez = 0;
                 ja = 0;
                 op1 = 0;
@@ -29,7 +29,7 @@ module decoder(
                 x8Sel = 1;
             end
             // ja (jump unconditional)
-            3'b001: begin
+            3'b100: begin
                 bez = 0;
                 ja = 1;
                 op1 = 1;
@@ -40,7 +40,7 @@ module decoder(
                 x8Sel = 0;
             end
             // bez (branch equal zero)
-            3'b010: begin
+            3'b000: begin
                 bez = 1;
                 ja = 0;
                 op1 = 0;
@@ -62,7 +62,7 @@ module decoder(
                 x8Sel = 2;
             end
             // lr (load register)
-            3'b100: begin
+            3'b101: begin
                 bez = 0;
                 ja = 0;
                 op1 = 0;
@@ -73,7 +73,7 @@ module decoder(
                 x8Sel = 0;
             end
             // not
-            3'b101: begin
+            3'b111: begin
                 bez = 0;
                 ja = 0;
                 op1 = 1;

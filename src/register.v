@@ -20,13 +20,16 @@ module register(
     // At clk edge if write enabled, write what's in x8 to requested register. keep x0 = 0	
     always @(negedge clk) begin
 	    if (writeReg) begin
-	        if (regAddr != 3'd0) 
+	        if (regAddr != 3'b000) begin
 		        registers[regAddr] <= x8;
-	        else
+		    end
+	        else begin
 		        registers[0] <= 6'b0;
+		    end
 	    end
 	    registers[0] <= 6'b0;
     end
+
 
     // Output requested reg always
     always @(*) begin
