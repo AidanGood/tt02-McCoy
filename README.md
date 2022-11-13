@@ -70,5 +70,5 @@ The x8 register is very similar to the Accumulator from the [Zinnia](https://git
 
 For something I spent 1 week designing the ISA and drawing circuit diagrams, and 1 week writing and debugging and optimizing the verilog to fit within the tight constraints, I think it turned out okay. Originally meant to be an 8-bit design, but flip-flops are very large and 80 of them is too many so I had to drop it down to 6-bit registers.
 
-The not instruction was originally going to be an ALU operation, but the gds tests were unable to successfully fit the design that way, even after optimizing the design from an area of 3,812 µm **without** the ALU not instruction (commit #14) down to an area of 3,482 µm **with** the ALU not instruction (commit #18). I ended up figuring out I could just copy what I had done to impliment pc+1, and make not its own module outside the ALU and add a 4-input mux.
+The not instruction was originally going to be an ALU operation, but the gds tests were unable to successfully fit the design that way, even after optimizing the design from an area of 3,812 µm **without** the ALU not instruction (commit #14) down to an area of 3,482 µm **with** the ALU not instruction (commit #18). I ended up copying what I had done to impliment pc+1, and make not its own module outside the ALU and add a 4-input mux.
 
