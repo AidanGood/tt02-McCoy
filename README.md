@@ -23,7 +23,7 @@ The 8 output bits:
  - When clock is low, output is x8
  - The two MSB bits are unused since the processor output is 6-bits.
 
-[circuit diagram](./McCoy_Diagram.png)
+![circuit diagram](./McCoy_Diagram.png)
 
 ## Instruction Set Architecture
 
