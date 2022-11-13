@@ -19,6 +19,4 @@ module branch(
         end
         else pcSel = 1;
     end
-    
-    
 endmodule    
