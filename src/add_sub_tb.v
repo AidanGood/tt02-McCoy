@@ -30,55 +30,55 @@ module add_sub_tb();
         #2
         reset = 0;
         $display("Begin testing addition with out not. 2 + 3 and 2 + -4");
-        instr = 6'b011001; // 3 li
+        instr = 6'b011000; // 3 li
         #2
-        instr = 6'b010110; // x2 sr 
+        instr = 6'b010101; // x2 sr 
         #2
-        instr = 6'b100001; // -4 li
+        instr = 6'b100000; // -4 li
         #2
-        instr = 6'b011110; // x3 sr
+        instr = 6'b011101; // x3 sr
         #2
-        instr = 6'b010001; // 2 li
+        instr = 6'b010000; // 2 li
         #2
-        instr = 6'b010011; // x2 add
+        instr = 6'b010001; // x2 add
         #1
         $display("Expected value: 2 + 3 = 5. Output: %d", outputs[5:0]); 
         #1 
-        instr = 6'b010001; // 2 li
+        instr = 6'b010000; // 2 li
         #2
-        instr = 6'b011011; // x3 add
+        instr = 6'b011001; // x3 add
         #2
         $display("Expected value: 2 + -4 = -2. Output: %d", $signed(outputs[5:0])); 
         $display("Begin testing addition with not. 3 - 12");
         #2
-        instr = 6'b011001; // 3 li
+        instr = 6'b011000; // 3 li
         #2
-        instr = 6'b001110; // x1 sr
+        instr = 6'b001101; // x1 sr
         #2
-        instr = 6'b001011; // x1 add
+        instr = 6'b001001; // x1 add
         #2
         $display("Expected value: 3 + 3 = 6. Output: %d", $signed(outputs[5:0])); 
-        instr = 6'b001011; // x1 add
+        instr = 6'b001001; // x1 add
         #2
         $display("Expected value: 3 + 6 = 9. Output: %d", $signed(outputs[5:0])); 
-        instr = 6'b001011; // x1 add
+        instr = 6'b001001; // x1 add
         #2
         $display("Expected value: 3 + 9 = 12. Output: %d", $signed(outputs[5:0])); 
         instr = 6'b001111; // not
         #2
         $display("Expected value: !12 = -13. Output: %d", $signed(outputs[5:0])); 
-        instr = 6'b001110; // x1 sr
+        instr = 6'b001101; // x1 sr
         #2
-        instr = 6'b001001; // 1 li
+        instr = 6'b001000; // 1 li
         #2
-        instr = 6'b001011; // x1 add
+        instr = 6'b001001; // x1 add
         #2
         $display("Expected value: 1 + -13 = -12. Output: %d", $signed(outputs[5:0])); 
-        instr = 6'b001110; // x1 sr
+        instr = 6'b001101; // x1 sr
         #2
-        instr = 6'b011001; // 3 li
+        instr = 6'b011000; // 3 li
         #2
-        instr = 6'b001011; // x1 add
+        instr = 6'b001001; // x1 add
         #2
         $display("Expected value: 3 + -12 = -9. Output: %d", $signed(outputs[5:0])); 
         $finish;
