@@ -43,13 +43,13 @@ Here are the 7 instructions, their encoding, and their operation:
 
 | Mnemonic | Reg/Imm | Opcode | Instruction | Operation |
 | ---      |---|---|---|---|
-| li | iii | 000 | Load Immediate to x8 | x8 = imm |
-| add | rrr | 001 | Add Register to x8 | x8 = x8 + reg |
-| bez | rrr | 010 | Branch if x8 = 0 | PC = (x8 == 0) ? PC + reg : PC + 1 |
-| lr | rrr | 011 | Load Register to x8 | x8 = reg |
-| sr | rrr | 101 | Store x8 to Register | reg = x8 |
-| ja | xxx | 110 | Jump by x8 | PC = PC + x8 |
-| not | xxx | 111 | Not x8 | x8 = ~x8 |
+| li | i i i | 001 | Load Immediate to x8 | x8 = imm |
+| add | r r r | 011 | Add Register to x8 | x8 = x8 + reg |
+| bez | r r r | 000 | Branch if x8 = 0 | PC = (x8 == 0) ? PC + reg : PC + 1 |
+| lr | r r r | 101 | Load Register to x8 | x8 = reg |
+| sr | r r r | 110 | Store x8 to Register | reg = x8 |
+| ja | x x x | 100 | Jump by x8 | PC = PC + x8 |
+| not | x x x | 111 | Not x8 | x8 = ~x8 |
 
 
 With these instructions addition, subtraction*, multiplication*, and division** can be executed on the processor. 
