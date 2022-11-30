@@ -6,8 +6,8 @@
 
 
 module notx8(
-    input [5:0] x8,
-    output [5:0] out);
+    input [7:0] x8,
+    output [7:0] out);
 
     assign out = ~x8;
 

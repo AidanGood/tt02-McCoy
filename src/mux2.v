@@ -5,10 +5,10 @@
 */
 
 module mux2(
-    input [5:0] in0,
-    input [5:0] in1,
+    input [7:0] in0,
+    input [7:0] in1,
     input sel,
-    output reg [5:0] out);
+    output reg [7:0] out);
 
     always @(*) begin
         case(sel)

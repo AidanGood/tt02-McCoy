@@ -5,12 +5,12 @@
 */
 
 module mux4(
-    input [5:0] in0,
-    input [5:0] in1,
-    input [5:0] in2,
-    input [5:0] in3,
+    input [7:0] in0,
+    input [7:0] in1,
+    input [7:0] in2,
+    input [7:0] in3,
     input [1:0] sel,
-    output reg [5:0] out);
+    output reg [7:0] out);
 
     always @(*) begin
         case(sel)

@@ -7,9 +7,9 @@
 
 module iSign(
     input [2:0] imm,
-    output [5:0] out);
+    output [7:0] out);
 
-    assign out = imm[2] ? {3'b111, imm} : {3'b000, imm};
+    assign out = imm[2] ? {5'b11111, imm} : {5'b00000, imm};
 
 endmodule
 
