@@ -76,7 +76,7 @@ module aidan_McCoy(
     mux4 x8Mux( .in0(regOut), .in1(imm), .in2(aluOut), .in3(notx8), .sel(x8Sel), .out(newx8));
     
     
-    assign io_out = clk ? {2'b00, pc} : {2'b00, x8};
+    assign io_out = clk ?  pc : x8;
 
     
 endmodule
