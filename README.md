@@ -57,7 +57,7 @@ I wanted to stick with organized fixed-length opcodes (like RISC-V) even though 
 
 Like the RISC-V ISA, the x0 register is always going to contain the number 0. In this design it is safe to try to write another number to the x0 register, nothing will happen. Any read from the x0 register will return 0.
 
-The PC register, since it is 8 bits, allows for programs of up to 2^8 = 128 instructions long. The only way to manually change the PC is through reset, which will set it back to 0, or through ja and bez. Otherwise it will increment by 1 each clock cycle.
+The PC register, since it is 8 bits, allows for programs of up to 2^8 = 256 instructions long. The only way to manually change the PC is through reset, which will set it back to 0, or through ja and bez. Otherwise it will increment by 1 each clock cycle.
 
 The x8 register is very similar to the Accumulator from the [Zinnia](https://github.com/cpldcpu/tinytapeout_mcpu5) microprocessor. This register is necessary because the limited instruction length means instructions can only access one register. To get around this limitation, x8 acts as either a default source register (sr, not, jump, add, bez) or a default destination register (add, li, lr, not). 
 
